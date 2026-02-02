@@ -5,75 +5,72 @@ export default function WhyBuySection() {
   const points = [
     "ফ্রি হোম ডেলিভারি সুবিধা।",
     "১০০% অরিজিনাল মধু ক্যাশব্যাক গ্যারান্টি।",
-    "প্রোডাক্ট হাতে পেয়ে কোয়ালিটি যাচাই করে পেমেন্ট করার সুবিধা।",
-    "অর্ডার সম্পন্ন হওয়ার সর্বোচ্চ ৭২ ঘণ্টার মধ্যে ডেলিভারি।",
-    "সারা দেশে ক্যাশ অন ডেলিভারি সুবিধা।"
+    "প্রোডাক্ট হাতে পেয়ে কোয়ালিটি যাচাই করে পেমেন্ট করার সুবিধা।",
+    "আমরা সুন্নাত তরিকায় ব্যবসা করি", // Added from screenshot
+    "ফ্রি হেলথ টিপস।" // Added from screenshot
   ];
 
   return (
-    <section className="relative py-16 md:py-24 bg-white overflow-hidden px-4">
-      {/* Background Image Layer - Fixed to repeat pattern properly */}
+    <section className="relative py-12 md:py-24 bg-white overflow-hidden px-6">
+      {/* Background Image Layer */}
       <div 
-        className="absolute inset-0 z-0 bg-repeat opacity-100" 
+        className="absolute inset-0 z-0 opacity-100" 
         style={{ 
           backgroundImage: "url('https://i.ibb.co.com/1tq5gcfg/white-bg-d0467847.png')",
-          backgroundSize: "contain", // Ensures the jagged line pattern tiles correctly
+          backgroundSize: "cover",
+          backgroundPosition: "center"
         }}
       ></div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
-        {/* Heading */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-5xl font-black text-[#002B36] leading-tight">
-            আমাদের থেকে কেন মধুময় বাদাম কিনবেন?
-          </h2>
-        </div>
+      <div className="max-w-4xl mx-auto relative z-10 text-center">
+        {/* Heading - Centered and Bold */}
+        <h2 className="text-2xl md:text-5xl font-black text-[#002B36] leading-tight mb-12">
+          আমাদের থেকে কেন মধুময় বাদাম কিনবেন?
+        </h2>
 
-        {/* Content Container with Bee */}
-        <div className="relative flex flex-col md:flex-row items-center justify-center gap-8">
-          
-          {/* List of Points with Green Checkmarks */}
-          <ul className="space-y-4 md:space-y-6 z-10">
+        <div className="relative flex flex-col items-center">
+          {/* Top Left Honey Dipper - Visible on mobile to match screenshot */}
+          <div className="absolute -left-4 top-0 md:top-10 opacity-90">
+            <img 
+              src="https://i.ibb.co.com/tMkzBcgV/honeyspoon-removebg-preview.png" 
+              className="w-20 md:w-32 rotate-12" 
+              alt="honey-dipper" 
+            />
+          </div>
+
+          {/* Centered Points - No checkmarks, just text blocks */}
+          <div className="space-y-6 md:space-y-8 max-w-lg mx-auto">
             {points.map((point, index) => (
-              <li key={index} className="flex items-center gap-3">
-                <div className="bg-[#22C55E] rounded-full p-1 text-white shrink-0 shadow-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </div>
-                <span className="text-lg md:text-2xl font-bold text-[#1A1A1A] leading-tight">
-                  {point}
-                </span>
-              </li>
+              <p 
+                key={index} 
+                className="text-lg md:text-2xl font-bold text-[#4A4A4A] leading-relaxed px-4"
+              >
+                {point}
+              </p>
             ))}
-          </ul>
+          </div>
 
-          {/* Animated Bee - Positioned to the right of the list */}
+          {/* Bottom Right Bee - Matches screenshot placement */}
           <motion.div
             animate={{
-              y: [0, -20, 0],
+              y: [0, -10, 0],
+              rotate: [0, 5, 0]
             }}
             transition={{
-              duration: 3,
+              duration: 4,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="md:absolute md:-right-20 w-24 md:w-40 opacity-100"
+            className="absolute -right-2 -bottom-6 w-20 md:w-40"
           >
             <img 
               src="https://i.ibb.co.com/1Gmj9zTv/bee3-removebg-preview.png" 
               alt="Bee" 
-              className="w-full h-auto drop-shadow-xl"
+              className="w-full h-auto drop-shadow-lg"
             />
           </motion.div>
         </div>
       </div>
-
-      {/* Side Decorative Honey Dipper */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 opacity-80 pointer-events-none hidden lg:block">
-        <img src="https://i.ibb.co.com/tMkzBcgV/honeyspoon-removebg-preview.png" className="w-32" alt="honey-dipper" />
-      </div>
-
     </section>
   );
 }
